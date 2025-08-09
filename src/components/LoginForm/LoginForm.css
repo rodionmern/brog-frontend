@@ -1,0 +1,15 @@
+.login-form {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+}
+
+input {
+    margin: 0px 0 15px 0;
+}
+
+.error-text {
+    color: #cf0808;
+    font-weight: bold;
+}

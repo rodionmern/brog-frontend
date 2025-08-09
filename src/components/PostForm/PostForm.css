@@ -1,0 +1,13 @@
+.post-form {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+input {
+    margin: 0px 0 15px 0;
+}
+
+textarea {
+    margin: 0px 0 15px 0;
+}
