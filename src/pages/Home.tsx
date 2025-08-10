@@ -1,6 +1,7 @@
-import axios from "axios"
+import api from "../api/api";
 import React, { useEffect, useState } from "react"
 import { Link } from "react-router-dom";
+
 import About from "../components/About/About";
 
 interface Post {
@@ -18,7 +19,7 @@ const Home = () => {
     useEffect(() => {
         const fetchPosts = async () => {
             try {
-                const responce: any = await axios.get('http://localhost:4200/api/posts')
+                const responce: any = await api.get('/posts')
                 const sortedPosts:any = [...responce.data].sort((a, b) => {
                     return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime();
                 });

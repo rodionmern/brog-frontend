@@ -1,6 +1,5 @@
 import './AdminPostsList.css'
 
-import axios from "axios"
 import { useEffect, useState } from "react"
 import api from "../../api/api";
 
@@ -21,7 +20,7 @@ const AdminPostsList = () => {
     useEffect(() => {
         const fetchPosts = async () => {
             try {
-                const responce: any = await axios.get('http://localhost:4200/api/posts')
+                const responce: any = await api.get('/posts')
                 const sortedPosts:any = [...responce.data].sort((a, b) => {
                     return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime();
                 });

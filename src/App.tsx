@@ -1,3 +1,5 @@
+import './App.css'
+
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
 import Navbar from './components/Navbar/Navbar'
@@ -7,8 +9,6 @@ import Login from './pages/Login'
 import Admin from './pages/Admin'
 import NotFound from './pages/NotFound'
 import Post from './pages/Post'
-
-import './App.css'
 
 function App() {
   return (

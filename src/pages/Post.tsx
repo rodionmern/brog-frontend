@@ -1,4 +1,4 @@
-import axios from "axios"
+import api from "../api/api";
 import React, { useEffect, useState } from "react"
 import { useLocation } from 'react-router-dom';
 
@@ -11,14 +11,14 @@ interface Post {
 
 const Post = () => {
     const location = useLocation()
-    const idPath = 'http://localhost:4200/api/posts' + location.pathname
+    const responsePath = '/posts' + location.pathname
     const [postData, setPostData] = useState<Post | null>(null)
     const [loading, setLoading] = useState(true)
-    console.log(idPath)
+    console.log(responsePath)
     useEffect(() => {
         const fetchPost = async () => {
             try {
-                const response:any = await axios.get(idPath)
+                const response:any = await api.get(responsePath)
                 setPostData({...postData, ...response.data})
             } catch (err) {
                 console.log(err)
@@ -27,7 +27,7 @@ const Post = () => {
             }
         }
         fetchPost()
-    }, [idPath]);
+    }, [responsePath]);
     console.log(postData)
     if (loading) return <div>Loading...</div>;
     if (!postData) return <div>No post found</div>;
