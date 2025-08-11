@@ -18,7 +18,7 @@ const Post = () => {
     useEffect(() => {
         const fetchPost = async () => {
             try {
-                const response:any = await api.get(responsePath)
+                const response = await api.get(responsePath)
                 setPostData({...postData, ...response.data})
             } catch (err) {
                 console.log(err)

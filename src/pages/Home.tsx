@@ -19,8 +19,8 @@ const Home = () => {
     useEffect(() => {
         const fetchPosts = async () => {
             try {
-                const responce: any = await api.get('/posts')
-                const sortedPosts:any = [...responce.data].sort((a, b) => {
+                const response = await api.get('/posts')
+                const sortedPosts:any = [...response.data].sort((a, b) => {
                     return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime();
                 });
                 setPosts(sortedPosts)

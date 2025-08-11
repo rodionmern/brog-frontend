@@ -23,13 +23,17 @@ const PostForm = () => {
                 value={newPost.title} 
                 onChange={(e) => setNewPost({...newPost, title: e.target.value})}
                 placeholder='Заголовок'
+                className='post-input'
                 required />
             <textarea
                 value={newPost.content} 
                 onChange={(e) => setNewPost({...newPost, content: e.target.value})}
                 placeholder='Описание'
+                className='post-textarea'
                 required />
-            <button onClick={handleSubmit}>Создать пост</button>
+            <button 
+                onClick={handleSubmit}
+                className='post-button'>Создать пост</button>
         </div>
     )
 }

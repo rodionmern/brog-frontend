@@ -39,29 +39,32 @@ const AdminPostsList = () => {
     if (loading) return <div>Loading...</div>
     if (error) return <div>Error: {error}</div>
 
-    const deletePost = (postId: any) => {
-        console.log(postId);
+    const deletePost = (postId: Number) => {
         api.delete(`/posts/delete/${postId}`);
     }
 
     return (
-        <div>
+        <div className='adminpostlist'>
             <div className="deletePost">
                 <input 
                     value={postId} 
+                    type="number"
                     placeholder="Id поста на удаление" 
-                    onChange={(e) => setPostId(e.target.value)}/>
-                <button onClick={() => deletePost(postId)}>Удалить пост</button>
+                    onChange={(e) => setPostId(e.target.value)}
+                    className='post-input'/>
+                <button 
+                    onClick={() => deletePost(Number(postId))}
+                    className='post-button'>Удалить пост</button>
             </div>
-            {posts && posts.length > 0 ? (
-                posts.map((post: Post) => (
-                    <div key={post.id}>
-                        <p>id: {post.id}, title: {post.title}</p>
-                    </div>
-                ))
-            ) : (
-                <div>No posts found</div>
-            )}
+            <div className="posts">
+                {posts && posts.length > 0 ? (
+                    posts.map((post: Post) => (
+                        <p key={post.id} className='post'>id: {post.id}, title: {post.title}</p>
+                    ))
+                ) : (
+                    <div>No posts found</div>
+                )}
+            </div>
         </div>
     )
 }
