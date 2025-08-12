@@ -2,6 +2,8 @@ import './AdminPostsList.css'
 
 import { useEffect, useState } from "react"
 import api from "../../api/api";
+import { logout } from '../../services/authService';
+import { useNavigate } from 'react-router-dom';
 
 interface Post {
     id: number;
@@ -11,6 +13,8 @@ interface Post {
 }
 
 const AdminPostsList = () => {
+    const navigate = useNavigate()
+
     const [postId, setPostId] = useState('')
 
     const [posts, setPosts] = useState([])
@@ -37,14 +41,24 @@ const AdminPostsList = () => {
     }, [])
 
     if (loading) return <div>Loading...</div>
-    if (error) return <div>Error: {error}</div>
 
-    const deletePost = (postId: Number) => {
-        api.delete(`/posts/delete/${postId}`);
+    const deletePost = async (postId: Number) => {
+        try {
+            await api.delete(`/posts/delete/${postId}`);
+        } catch (err) {
+            if (err == 'AxiosError: Request failed with status code 400') {
+                setError(`Время сессии окончилось, произвожу выход`);
+                logout();
+                setTimeout(() => navigate('/login'), 2000)
+            } else {
+                setError(`${err}`);
+            }
+        }
     }
 
     return (
         <div className='adminpostlist'>
+            <p className='error'>{error}</p>
             <div className="deletePost">
                 <input 
                     value={postId} 

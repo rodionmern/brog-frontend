@@ -10,7 +10,7 @@
 
   color-scheme: light dark;
   color: #fff;
-  background-color: #242424;
+  background-color: #161b22;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -44,7 +44,7 @@ input {
   text-align: center;
   height: 25px;
   width: 200px;
-  background-color: #333;
+  background-color: #21262d;
   color: #fff;
   border: none;
   border-radius: 5px;
@@ -57,7 +57,7 @@ textarea {
   text-align: center;
   height: 100px;
   width: 200px;
-  background-color: #333;
+  background-color: #21262d;
   color: #fff;
   border: 1px solid #222;
   border-radius: 5px;
@@ -75,7 +75,7 @@ button {
   font-weight: 500;
   font-family: inherit;
   color: #fff;
-  background-color: #1a1a1a;
+  background-color: #0d1117;
   cursor: pointer;
   transition: border-color 0.25s;
 }
